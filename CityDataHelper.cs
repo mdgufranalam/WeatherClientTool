@@ -25,10 +25,10 @@ namespace WeatherClientTool
             try
             {
                 _logger.LogInformation("Application {applicationEvent} at {dateTime}", "Started", DateTime.UtcNow);
-                var httlClient = new HttpClient();
+                
                 using var client = new HttpClient();
 
-                var response =  client.GetAsync(url);             
+                var response = client.GetAsync(url);             
 
 
                 _logger.LogInformation("HttpCall {applicationEvent} at {dateTime}", "End", DateTime.UtcNow);
@@ -46,7 +46,7 @@ namespace WeatherClientTool
             catch (Exception ex)
             {
 
-                throw ex;
+                return ex.Message;
             }
 
         }

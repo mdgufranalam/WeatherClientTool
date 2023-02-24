@@ -25,11 +25,11 @@ builder.Build();
 ICityDataHelper cityDataHelper = new CityDataHelper(_logger);
 
 List<CityData> cities=new List<CityData>();
-cities = cityDataHelper.GetCityData().Result;
+cities = await cityDataHelper.GetCityData();
 string cityName = string.Empty;
 while(true)
 {
-    Console.WriteLine("\nPlease Ente City Name : ");
+    Console.WriteLine("\nPlease Ente City Name (Enter 'Exit' for close) : ");
     cityName = Console.ReadLine();
     var cityinfo = cities.Where(p => p.city.ToLower() == cityName.ToLower()).ToList();
     if (cityName == string.Empty)
