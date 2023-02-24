@@ -24,7 +24,7 @@ namespace WeatherClientTool
         {
             try
             {
-                _logger.LogInformation("Application {applicationEvent} at {dateTime}", "Started", DateTime.UtcNow);
+                _logger.LogInformation("HttpCall {applicationEvent} at {dateTime}", "Started", DateTime.UtcNow);
                 
                 using var client = new HttpClient();
 
