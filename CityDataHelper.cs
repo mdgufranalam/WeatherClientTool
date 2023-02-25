@@ -55,10 +55,19 @@ namespace WeatherClientTool
         {
             try
             {
-                string text = File.ReadAllText(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName+@"/data/citydata.json");
-                text=text.Replace("ā", "a");
-                var cities = JsonSerializer.Deserialize<List<CityData>>(text);
-                return cities;
+                string filePath = $"{Directory.GetCurrentDirectory()}/Data/CityData.json";
+                if(File.Exists(filePath))
+                {
+                    string text = File.ReadAllText(filePath);
+                    text = text.Replace("ā", "a");
+                    var cities = JsonSerializer.Deserialize<List<CityData>>(text);
+                    return cities;
+                }
+                else
+                {
+                    throw new Exception("File not found at :"+ filePath);
+                }
+                
             }
             catch (Exception ex)
             {
